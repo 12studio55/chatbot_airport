@@ -28,11 +28,14 @@ if "messages" not in st.session_state:
         ]
 
 # チャットボットとやりとりする関数
-def communicate():
+def communicate(messe):
     messages = st.session_state["messages"]
 
-    user_message = {"role": "user", "content": st.session_state["user_input"]}
-    messages.append(user_message)
+    if messe == "":
+        user_message = {"role": "user", "content": st.session_state["user_input"]}
+        messages.append(user_message)
+    else:
+        user_message = {"role": "user", "content": messe}
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -44,10 +47,10 @@ def communicate():
 
     st.session_state["user_input"] = ""  # 入力欄を消去
 
-    coversation_cnt += 1
+    coversation_cnt = coversation_cnt + 1
 
     if coversation_cnt == 5:
-        communicate()
+        communicate("End!")
 
 
 
