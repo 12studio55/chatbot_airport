@@ -60,7 +60,7 @@ st.write("アメリカの空港での入国審査の時の英会話のレッス�
 st.write("入国審査官の質問に英語で答えてください。")
 st.write("５回やり取りしたら、最後にあなたの英語の評価が表示されます。")
 
-user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
+user_input = st.text_input("答えてください", key="user_input", on_change=communicate)
 
 if st.session_state["messages"]:
     messages = st.session_state["messages"]
